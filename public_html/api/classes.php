@@ -11,7 +11,7 @@ require_once __DIR__ . '/../includes/helpers.php';
 $user = requireAuth();
 $db   = getDB();
 
-$input  = ($_SERVER['CONTENT_TYPE'] ?? '') === 'application/json' ? jsonInput() : $_POST;
+$input  = str_contains($_SERVER['CONTENT_TYPE'] ?? '', 'application/json') ? jsonInput() : $_POST;
 $action = $input['action'] ?? $_GET['action'] ?? '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

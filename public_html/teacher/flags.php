@@ -73,7 +73,7 @@ $violations = $stmt->fetchAll();
                                 <p class="text-sm text-gray-400"><?= e($v['class_name']) ?> · <?= $v['document_title'] ? e($v['document_title']) : 'Unknown document' ?></p>
                             </div>
                             <div class="text-right">
-                                <span class="inline-block text-xs bg-<?= $v['severity'] === 'high' ? 'red' : ($v['severity'] === 'medium' ? 'yellow' : 'gray') ?>-100 text-<?= $v['severity'] === 'high' ? 'red' : ($v['severity'] === 'medium' ? 'yellow' : 'gray') ?>-700 px-2 py-0.5 rounded">
+                                <span class="inline-block text-xs px-2 py-0.5 rounded <?= $v['severity'] === 'high' ? 'bg-red-100 text-red-700' : ($v['severity'] === 'medium' ? 'bg-yellow-100 text-yellow-700' : 'bg-gray-100 text-gray-700') ?>">
                                     <?= ucfirst($v['severity']) ?>
                                 </span>
                                 <p class="text-xs text-gray-400 mt-1"><?= date('M j, Y g:ia', strtotime($v['created_at'])) ?></p>

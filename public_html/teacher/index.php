@@ -102,7 +102,7 @@ $violations = $stmt->fetchAll();
                                 </p>
                                 <p class="text-xs text-gray-400"><?= e($v['class_name']) ?></p>
                                 <p class="text-xs text-red-500 mt-1 truncate"><?= e($v['flagged_text']) ?></p>
-                                <span class="inline-block mt-2 text-xs bg-<?= $v['severity'] === 'high' ? 'red' : 'yellow' ?>-100 text-<?= $v['severity'] === 'high' ? 'red' : 'yellow' ?>-700 px-2 py-0.5 rounded">
+                                <span class="inline-block mt-2 text-xs px-2 py-0.5 rounded <?= $v['severity'] === 'high' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700' ?>">
                                     <?= e(ucfirst($v['severity'])) ?>
                                 </span>
                             </div>

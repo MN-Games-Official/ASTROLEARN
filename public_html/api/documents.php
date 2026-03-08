@@ -12,7 +12,7 @@ $user = requireAuth();
 $db   = getDB();
 
 // Accept both form POST and JSON body
-$input = $_SERVER['CONTENT_TYPE'] === 'application/json'
+$input = str_contains($_SERVER['CONTENT_TYPE'] ?? '', 'application/json')
     ? jsonInput()
     : $_POST;
 

@@ -8,9 +8,10 @@ require_once __DIR__ . '/../includes/helpers.php';
 $user = requireRole('admin');
 $db   = getDB();
 
-// Stats
+// Stats – table names are hardcoded in the whitelist; no user input is used.
+$allowedTables = ['users', 'classes', 'documents', 'assignments', 'policy_violations'];
 $stats = [];
-foreach (['users', 'classes', 'documents', 'assignments', 'policy_violations'] as $table) {
+foreach ($allowedTables as $table) {
     $stmt = $db->query("SELECT COUNT(*) AS cnt FROM `{$table}`");
     $stats[$table] = (int) $stmt->fetch()['cnt'];
 }
@@ -87,7 +88,7 @@ $violations = $db->query(
                             <p class="font-medium text-sm"><?= e($v['first_name'] . ' ' . $v['last_name']) ?></p>
                             <p class="text-xs text-gray-400 truncate max-w-md"><?= e($v['flagged_text']) ?></p>
                         </div>
-                        <span class="text-xs bg-<?= $v['severity'] === 'high' ? 'red' : 'yellow' ?>-100 text-<?= $v['severity'] === 'high' ? 'red' : 'yellow' ?>-700 px-2 py-0.5 rounded">
+                        <span class="text-xs px-2 py-0.5 rounded <?= $v['severity'] === 'high' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700' ?>">
                             <?= ucfirst($v['severity']) ?>
                         </span>
                     </div>

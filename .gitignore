@@ -1,0 +1,25 @@
+# Storage directories (user uploads, temp files)
+public_html/storage/uploads/*
+public_html/storage/exports/*
+public_html/storage/temp/*
+!public_html/storage/uploads/.gitkeep
+!public_html/storage/exports/.gitkeep
+!public_html/storage/temp/.gitkeep
+
+# Environment / secrets
+.env
+public_html/includes/config.local.php
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dependencies
+node_modules/
+vendor/
